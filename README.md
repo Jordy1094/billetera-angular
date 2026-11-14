@@ -13,7 +13,14 @@ La misma billetera del Caso 1, pero en Angular y con dos componentes. `Billetera
 
 ## Cómo ejecutarlo
 
-Desde la carpeta del proyecto:
+Para descargar el proyecto:
+
+```
+git clone https://github.com/Jordy1094/billetera-angular.git
+cd billetera-angular
+```
+
+Luego, desde la carpeta del proyecto:
 
 ```
 npm install
