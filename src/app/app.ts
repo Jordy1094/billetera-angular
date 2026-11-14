@@ -1,0 +1,9 @@
+import { Component } from '@angular/core';
+import { BilleteraComponent } from './billetera/billetera';
+
+@Component({
+  selector: 'app-root',
+  imports: [BilleteraComponent],
+  templateUrl: './app.html',
+})
+export class AppComponent {}

@@ -1,0 +1,41 @@
+<div class="card shadow-sm h-100">
+  <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+    <span class="fw-semibold">NuevoMovimientoComponent</span>
+    <span class="badge text-bg-light">HIJO</span>
+  </div>
+  <div class="card-body">
+    <form (submit)="registrar($event)" novalidate>
+      <div class="mb-3">
+        <label for="tipo" class="form-label">Tipo de movimiento</label>
+        <select id="tipo" class="form-select" #tipoSelect [value]="tipo" (change)="cambiarTipo(tipoSelect.value)">
+          <option value="Recarga">Recarga</option>
+          <option value="Gasto">Gasto</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="monto" class="form-label">Monto (S/)</label>
+        <input
+          id="monto"
+          type="text"
+          class="form-control"
+          placeholder="0.00"
+          #montoInput
+          [class.is-invalid]="error() !== ''"
+          [value]="montoTexto"
+          (input)="cambiarMonto(montoInput.value)"
+        />
+      </div>
+
+      @if (error()) {
+        <div class="alert alert-danger py-2" role="alert" id="mensaje-error">{{ error() }}</div>
+      }
+
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary" id="btn-registrar" [disabled]="!esValido()">
+          Registrar movimiento
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

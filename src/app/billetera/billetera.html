@@ -1,0 +1,42 @@
+<div class="row g-4">
+  <div class="col-lg-6">
+    <div class="card shadow-sm h-100">
+      <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+        <span class="fw-semibold">BilleteraComponent</span>
+        <span class="badge text-bg-secondary">PADRE</span>
+      </div>
+      <div class="card-body">
+        <p class="text-muted small mb-1">Saldo disponible</p>
+        <p class="display-6 fw-bold text-success mb-4" id="saldo">S/ {{ saldo.toFixed(2) }}</p>
+
+        <h2 class="h6 fw-semibold mb-3">Movimientos</h2>
+
+        @if (movimientos.length === 0) {
+          <div class="alert alert-light border mb-0" id="historial-vacio">Aún no hay movimientos</div>
+        }
+
+        <ul class="list-group" id="lista-movimientos">
+          @for (mov of movimientos; track $index) {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span class="badge rounded-pill px-4" [class]="mov.tipo === 'Recarga' ? 'text-bg-success' : 'text-bg-danger'">
+                {{ mov.tipo }}
+              </span>
+              <span class="fw-semibold" [class]="mov.tipo === 'Recarga' ? 'text-success' : 'text-danger'">
+                {{ mov.tipo === 'Recarga' ? '+' : '-' }} S/ {{ mov.monto.toFixed(2) }}
+              </span>
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <app-nuevo-movimiento [saldo]="saldo" (movimiento)="registrarMovimiento($event)" />
+  </div>
+</div>
+
+<div class="bg-body-secondary rounded px-3 py-2 mt-4 small">
+  <span class="fw-semibold text-uppercase me-3">El padre es dueño del estado</span>
+  <span class="text-muted">El hijo solo valida y notifica una solicitud válida.</span>
+</div>
